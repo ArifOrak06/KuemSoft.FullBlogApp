@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KuemSoft.FullBlogApp.WebUI", "KuemSoft.FullBlogApp.WebUI\KuemSoft.FullBlogApp.WebUI.csproj", "{74F61698-BABE-4A2C-BE80-E29E8FC52913}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KuemSoft.FullBlogApp.Repository", "KuemSoft.FullBlogApp.Repository\KuemSoft.FullBlogApp.Repository.csproj", "{5519E0C0-8E09-4223-9496-062EB128CAA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KuemSoft.FullBlogApp.Core", "KuemSoft.FullBlogApp.Core\KuemSoft.FullBlogApp.Core.csproj", "{70479A83-930C-4A86-A40E-8B946A9EEC89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KuemSoft.FullBlogApp.Service", "KuemSoft.FullBlogApp.Service\KuemSoft.FullBlogApp.Service.csproj", "{7DEA7122-7368-4D12-9CA2-110EC3F23034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KuemSoft.FullBlogApp.SharedLibrary", "KuemSoft.FullBlogApp.SharedLibrary\KuemSoft.FullBlogApp.SharedLibrary.csproj", "{EEE49AD1-AEA6-4EAB-AF5A-6C859B3D16D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74F61698-BABE-4A2C-BE80-E29E8FC52913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F61698-BABE-4A2C-BE80-E29E8FC52913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F61698-BABE-4A2C-BE80-E29E8FC52913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F61698-BABE-4A2C-BE80-E29E8FC52913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5519E0C0-8E09-4223-9496-062EB128CAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5519E0C0-8E09-4223-9496-062EB128CAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5519E0C0-8E09-4223-9496-062EB128CAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5519E0C0-8E09-4223-9496-062EB128CAA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70479A83-930C-4A86-A40E-8B946A9EEC89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70479A83-930C-4A86-A40E-8B946A9EEC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70479A83-930C-4A86-A40E-8B946A9EEC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70479A83-930C-4A86-A40E-8B946A9EEC89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DEA7122-7368-4D12-9CA2-110EC3F23034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEA7122-7368-4D12-9CA2-110EC3F23034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DEA7122-7368-4D12-9CA2-110EC3F23034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEA7122-7368-4D12-9CA2-110EC3F23034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE49AD1-AEA6-4EAB-AF5A-6C859B3D16D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE49AD1-AEA6-4EAB-AF5A-6C859B3D16D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE49AD1-AEA6-4EAB-AF5A-6C859B3D16D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE49AD1-AEA6-4EAB-AF5A-6C859B3D16D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
