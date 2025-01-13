@@ -1,7 +1,14 @@
+using KuemSoft.FullBlogApp.Repository.Extensions.Microsoft;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDependenciesToRepositoryLayer(builder.Configuration);
+
+
+
+
 
 var app = builder.Build();
 
