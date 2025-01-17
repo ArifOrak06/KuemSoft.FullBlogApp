@@ -21,5 +21,6 @@ namespace KuemSoft.FullBlogApp.Repository.Contexts.EfCore
         DbSet<Article> Articles { get; set; }
         DbSet<Comment> Comments {  get; set; }  
         DbSet<Tag> Tags { get; set; }
+        
     }
 }

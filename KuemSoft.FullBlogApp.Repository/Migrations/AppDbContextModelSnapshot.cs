@@ -63,6 +63,26 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("7143e119-7e8f-4205-abb2-41434d76f197"),
+                            Name = "superadmin",
+                            NormalizedName = "SUPERADMIN"
+                        },
+                        new
+                        {
+                            Id = new Guid("76a068b9-09d7-42f5-b374-d54b18c51506"),
+                            Name = "admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = new Guid("c4d92192-8316-45cd-84dc-e81dc5b80b8b"),
+                            Name = "member",
+                            NormalizedName = "MEMBER"
+                        });
                 });
 
             modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.AppUser", b =>
@@ -135,6 +155,46 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "0d079b79-5fc0-4896-ba61-27029777851a",
+                            Email = "superadmin@kuemsoft.com",
+                            EmailConfirmed = true,
+                            FirstName = "Arif",
+                            LastName = "ORAK",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SUPERADMIN@KUEMSOFT.COM",
+                            NormalizedUserName = "SUPERADMIN@KUEMSOFT.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKS+pEKKpzqOgyv2tsRp5QdkY1z/uuXvjZc3wPi78tjoF9x7l13LLGeKRvB/XUcr1w==",
+                            PhoneNumber = "0111 222 33 44",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "c37c5f25-9f2c-4bfb-897d-d81e313ae291",
+                            TwoFactorEnabled = false,
+                            UserName = "superadmin@kuemsoft.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("f19cc326-05f2-4305-ad39-f4e0645aeca0"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8c5a968b-6710-4ff5-82c9-1c1cb717d5c3",
+                            Email = "member@kuemsoft.com",
+                            EmailConfirmed = true,
+                            FirstName = "Alparslan",
+                            LastName = "ORAK",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MEMBER@KUEMSOFT.COM",
+                            NormalizedUserName = "MEMBER@KUEMSOFT.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFiVw2Zx+Zn2jFYNU0+D7GGqEXvKGi6FpydITh2o/cMR9Qxll+7iaZqSpuUfFz0XOg==",
+                            PhoneNumber = "0111 222 33 44",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "d81e1124-12b5-4424-8113-6e66b8291a35",
+                            TwoFactorEnabled = false,
+                            UserName = "member@kuemsoft.com"
+                        });
                 });
 
             modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.Article", b =>
@@ -175,6 +235,34 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Articles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("40b63cd3-d9d4-4e47-906f-ea4564b4d827"),
+                            AppUserId = new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"),
+                            Content = "ASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend Geliştirmek",
+                            CreatedBy = "Adminastrator",
+                            CreatedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3017),
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModifiedBy = "Adminastrator",
+                            ModifiedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3018),
+                            Title = "ASP.Net Core Teknolojisi İle Web backend Geliştirmek"
+                        },
+                        new
+                        {
+                            Id = new Guid("c1b57612-0f59-4d8d-956e-07e40fc7734a"),
+                            AppUserId = new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"),
+                            Content = "ANodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API Geliştirmek",
+                            CreatedBy = "Adminastrator",
+                            CreatedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3021),
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModifiedBy = "Adminastrator",
+                            ModifiedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3022),
+                            Title = "NodeJs ile Restfull Web API Geliştirmek"
+                        });
                 });
 
             modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.Comment", b =>
@@ -250,6 +338,41 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tags");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("9679a96b-e6e6-44a5-b04e-20c80d70bd4b"),
+                            CreatedBy = "Adminastrator",
+                            CreatedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3640),
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModifiedBy = "Admiastrator",
+                            ModifiedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3640),
+                            Text = "Web Programlama"
+                        },
+                        new
+                        {
+                            Id = new Guid("8183e35a-277b-4c1f-8a66-d75f68b80bf5"),
+                            CreatedBy = "Adminastrator",
+                            CreatedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3642),
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModifiedBy = "Admiastrator",
+                            ModifiedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3643),
+                            Text = "Mobil Programlama"
+                        },
+                        new
+                        {
+                            Id = new Guid("10b0d58b-8155-48f7-a334-977513ec67d0"),
+                            CreatedBy = "Adminastrator",
+                            CreatedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3645),
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModifiedBy = "Admiastrator",
+                            ModifiedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3646),
+                            Text = "Masaüstü Programlama"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
