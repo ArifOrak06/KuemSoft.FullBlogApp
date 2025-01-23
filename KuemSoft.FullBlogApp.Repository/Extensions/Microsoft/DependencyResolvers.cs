@@ -1,4 +1,6 @@
-﻿using KuemSoft.FullBlogApp.Repository.Contexts.EfCore;
+﻿using KuemSoft.FullBlogApp.Core.Repositories;
+using KuemSoft.FullBlogApp.Repository.Contexts.EfCore;
+using KuemSoft.FullBlogApp.Repository.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +18,13 @@ namespace KuemSoft.FullBlogApp.Repository.Extensions.Microsoft
                 {
                     opt.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
                 });
+                
             });
+
+            services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
+
         }
+
     }
 }
