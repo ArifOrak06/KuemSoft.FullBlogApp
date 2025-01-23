@@ -8,7 +8,7 @@ namespace KuemSoft.FullBlogApp.Core.Entities.Concrete
         public string? Email { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
-        public Guid ImgId { get; set; }
+        public Guid? ImgId { get; set; }
         public Img Img { get; set; }
         public ICollection<Article> Articles { get; set; } = new List<Article>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();

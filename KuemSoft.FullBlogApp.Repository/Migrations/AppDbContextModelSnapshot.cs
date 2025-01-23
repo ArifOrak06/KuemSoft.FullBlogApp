@@ -108,6 +108,9 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("ImgId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -146,6 +149,8 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ImgId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -161,7 +166,7 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                         {
                             Id = new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0d079b79-5fc0-4896-ba61-27029777851a",
+                            ConcurrencyStamp = "8b50dc02-e098-439a-a01c-16d502de1de3",
                             Email = "superadmin@kuemsoft.com",
                             EmailConfirmed = true,
                             FirstName = "Arif",
@@ -169,10 +174,10 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@KUEMSOFT.COM",
                             NormalizedUserName = "SUPERADMIN@KUEMSOFT.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKS+pEKKpzqOgyv2tsRp5QdkY1z/uuXvjZc3wPi78tjoF9x7l13LLGeKRvB/XUcr1w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOidCUAqC28NyjD+3FzoHCbpqy7FkBJmO/JDQVDOOR4+jBITnSKztx/dTeAXGFSs/Q==",
                             PhoneNumber = "0111 222 33 44",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "c37c5f25-9f2c-4bfb-897d-d81e313ae291",
+                            SecurityStamp = "8676467c-ba0a-4ad0-a409-f3744a553559",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@kuemsoft.com"
                         },
@@ -180,7 +185,7 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                         {
                             Id = new Guid("f19cc326-05f2-4305-ad39-f4e0645aeca0"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8c5a968b-6710-4ff5-82c9-1c1cb717d5c3",
+                            ConcurrencyStamp = "d580df44-db58-4557-8d2b-71302f26bb4c",
                             Email = "member@kuemsoft.com",
                             EmailConfirmed = true,
                             FirstName = "Alparslan",
@@ -188,10 +193,10 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MEMBER@KUEMSOFT.COM",
                             NormalizedUserName = "MEMBER@KUEMSOFT.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFiVw2Zx+Zn2jFYNU0+D7GGqEXvKGi6FpydITh2o/cMR9Qxll+7iaZqSpuUfFz0XOg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDLoZevpAx4H+YuK/GPWnczovpbDfB5LkFZ/fTFZOorb2KRb1/e07e/pR0bkAOZMBg==",
                             PhoneNumber = "0111 222 33 44",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "d81e1124-12b5-4424-8113-6e66b8291a35",
+                            SecurityStamp = "70603d67-c73d-4118-b986-050f3da4fb1d",
                             TwoFactorEnabled = false,
                             UserName = "member@kuemsoft.com"
                         });
@@ -206,6 +211,9 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                     b.Property<Guid?>("AppUserId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -214,6 +222,9 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("ImgId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -234,6 +245,10 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
 
                     b.HasIndex("AppUserId");
 
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ImgId");
+
                     b.ToTable("Articles");
 
                     b.HasData(
@@ -243,11 +258,11 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                             AppUserId = new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"),
                             Content = "ASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend Geliştirmek",
                             CreatedBy = "Adminastrator",
-                            CreatedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3017),
+                            CreatedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(3619),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedBy = "Adminastrator",
-                            ModifiedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3018),
+                            ModifiedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(3620),
                             Title = "ASP.Net Core Teknolojisi İle Web backend Geliştirmek"
                         },
                         new
@@ -256,12 +271,69 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                             AppUserId = new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"),
                             Content = "ANodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API Geliştirmek",
                             CreatedBy = "Adminastrator",
-                            CreatedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3021),
+                            CreatedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(3624),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedBy = "Adminastrator",
-                            ModifiedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3022),
+                            ModifiedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(3624),
                             Title = "NodeJs ile Restfull Web API Geliştirmek"
+                        });
+                });
+
+            modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b6a67185-45c5-4707-af76-1b55ed3c3b6a"),
+                            CreatedBy = "Adminastrator",
+                            CreatedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(4590),
+                            Description = "Mobile Application Development",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModifiedBy = "Adminastrator",
+                            ModifiedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(4593)
+                        },
+                        new
+                        {
+                            Id = new Guid("6647b6ef-b52b-4ef8-abb1-f32360323bd6"),
+                            CreatedBy = "Adminastrator",
+                            CreatedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(4595),
+                            Description = "Web Application Development",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModifiedBy = "Adminastrator",
+                            ModifiedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(4641)
                         });
                 });
 
@@ -308,6 +380,43 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.Img", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Img");
+                });
+
             modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.Tag", b =>
                 {
                     b.Property<Guid>("Id")
@@ -344,33 +453,33 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                         {
                             Id = new Guid("9679a96b-e6e6-44a5-b04e-20c80d70bd4b"),
                             CreatedBy = "Adminastrator",
-                            CreatedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3640),
+                            CreatedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5159),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedBy = "Admiastrator",
-                            ModifiedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3640),
+                            ModifiedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5160),
                             Text = "Web Programlama"
                         },
                         new
                         {
                             Id = new Guid("8183e35a-277b-4c1f-8a66-d75f68b80bf5"),
                             CreatedBy = "Adminastrator",
-                            CreatedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3642),
+                            CreatedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5163),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedBy = "Admiastrator",
-                            ModifiedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3643),
+                            ModifiedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5164),
                             Text = "Mobil Programlama"
                         },
                         new
                         {
                             Id = new Guid("10b0d58b-8155-48f7-a334-977513ec67d0"),
                             CreatedBy = "Adminastrator",
-                            CreatedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3645),
+                            CreatedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5166),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedBy = "Admiastrator",
-                            ModifiedDate = new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3646),
+                            ModifiedDate = new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5167),
                             Text = "Masaüstü Programlama"
                         });
                 });
@@ -493,13 +602,34 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.AppUser", b =>
+                {
+                    b.HasOne("KuemSoft.FullBlogApp.Core.Entities.Concrete.Img", "Img")
+                        .WithMany("AppUsers")
+                        .HasForeignKey("ImgId");
+
+                    b.Navigation("Img");
+                });
+
             modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.Article", b =>
                 {
                     b.HasOne("KuemSoft.FullBlogApp.Core.Entities.Concrete.AppUser", "AppUser")
                         .WithMany("Articles")
                         .HasForeignKey("AppUserId");
 
+                    b.HasOne("KuemSoft.FullBlogApp.Core.Entities.Concrete.Category", "Category")
+                        .WithMany("Articles")
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("KuemSoft.FullBlogApp.Core.Entities.Concrete.Img", "Img")
+                        .WithMany("Articles")
+                        .HasForeignKey("ImgId");
+
                     b.Navigation("AppUser");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Img");
                 });
 
             modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.Comment", b =>
@@ -573,6 +703,18 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                     b.Navigation("Articles");
 
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.Category", b =>
+                {
+                    b.Navigation("Articles");
+                });
+
+            modelBuilder.Entity("KuemSoft.FullBlogApp.Core.Entities.Concrete.Img", b =>
+                {
+                    b.Navigation("AppUsers");
+
+                    b.Navigation("Articles");
                 });
 #pragma warning restore 612, 618
         }

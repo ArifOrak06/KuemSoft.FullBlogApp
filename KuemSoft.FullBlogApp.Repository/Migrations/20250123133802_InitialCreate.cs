@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace KuemSoft.FullBlogApp.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class SeedDataAddedAndİnitialDb : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,30 +28,40 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Img",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Img", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,6 +104,39 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImgId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_Img_ImgId",
+                        column: x => x.ImgId,
+                        principalTable: "Img",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Articles",
                 columns: table => new
                 {
@@ -101,6 +144,8 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AppUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ImgId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -115,6 +160,16 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                         name: "FK_Articles_AspNetUsers_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Articles_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Articles_Img_ImgId",
+                        column: x => x.ImgId,
+                        principalTable: "Img",
                         principalColumn: "Id");
                 });
 
@@ -269,11 +324,20 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImgId", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"), 0, "0d079b79-5fc0-4896-ba61-27029777851a", "superadmin@kuemsoft.com", true, "Arif", "ORAK", false, null, "SUPERADMIN@KUEMSOFT.COM", "SUPERADMIN@KUEMSOFT.COM", "AQAAAAIAAYagAAAAEKS+pEKKpzqOgyv2tsRp5QdkY1z/uuXvjZc3wPi78tjoF9x7l13LLGeKRvB/XUcr1w==", "0111 222 33 44", true, "c37c5f25-9f2c-4bfb-897d-d81e313ae291", false, "superadmin@kuemsoft.com" },
-                    { new Guid("f19cc326-05f2-4305-ad39-f4e0645aeca0"), 0, "8c5a968b-6710-4ff5-82c9-1c1cb717d5c3", "member@kuemsoft.com", true, "Alparslan", "ORAK", false, null, "MEMBER@KUEMSOFT.COM", "MEMBER@KUEMSOFT.COM", "AQAAAAIAAYagAAAAEFiVw2Zx+Zn2jFYNU0+D7GGqEXvKGi6FpydITh2o/cMR9Qxll+7iaZqSpuUfFz0XOg==", "0111 222 33 44", true, "d81e1124-12b5-4424-8113-6e66b8291a35", false, "member@kuemsoft.com" }
+                    { new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"), 0, "8b50dc02-e098-439a-a01c-16d502de1de3", "superadmin@kuemsoft.com", true, "Arif", null, "ORAK", false, null, "SUPERADMIN@KUEMSOFT.COM", "SUPERADMIN@KUEMSOFT.COM", "AQAAAAIAAYagAAAAEOidCUAqC28NyjD+3FzoHCbpqy7FkBJmO/JDQVDOOR4+jBITnSKztx/dTeAXGFSs/Q==", "0111 222 33 44", true, "8676467c-ba0a-4ad0-a409-f3744a553559", false, "superadmin@kuemsoft.com" },
+                    { new Guid("f19cc326-05f2-4305-ad39-f4e0645aeca0"), 0, "d580df44-db58-4557-8d2b-71302f26bb4c", "member@kuemsoft.com", true, "Alparslan", null, "ORAK", false, null, "MEMBER@KUEMSOFT.COM", "MEMBER@KUEMSOFT.COM", "AQAAAAIAAYagAAAAEDLoZevpAx4H+YuK/GPWnczovpbDfB5LkFZ/fTFZOorb2KRb1/e07e/pR0bkAOZMBg==", "0111 222 33 44", true, "70603d67-c73d-4118-b986-050f3da4fb1d", false, "member@kuemsoft.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "IsActive", "IsDeleted", "ModifiedBy", "ModifiedDate" },
+                values: new object[,]
+                {
+                    { new Guid("6647b6ef-b52b-4ef8-abb1-f32360323bd6"), "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(4595), "Web Application Development", true, false, "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(4641) },
+                    { new Guid("b6a67185-45c5-4707-af76-1b55ed3c3b6a"), "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(4590), "Mobile Application Development", true, false, "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(4593) }
                 });
 
             migrationBuilder.InsertData(
@@ -281,24 +345,34 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsActive", "IsDeleted", "ModifiedBy", "ModifiedDate", "Text" },
                 values: new object[,]
                 {
-                    { new Guid("10b0d58b-8155-48f7-a334-977513ec67d0"), "Adminastrator", new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3645), true, false, "Admiastrator", new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3646), "Masaüstü Programlama" },
-                    { new Guid("8183e35a-277b-4c1f-8a66-d75f68b80bf5"), "Adminastrator", new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3642), true, false, "Admiastrator", new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3643), "Mobil Programlama" },
-                    { new Guid("9679a96b-e6e6-44a5-b04e-20c80d70bd4b"), "Adminastrator", new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3640), true, false, "Admiastrator", new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3640), "Web Programlama" }
+                    { new Guid("10b0d58b-8155-48f7-a334-977513ec67d0"), "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5166), true, false, "Admiastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5167), "Masaüstü Programlama" },
+                    { new Guid("8183e35a-277b-4c1f-8a66-d75f68b80bf5"), "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5163), true, false, "Admiastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5164), "Mobil Programlama" },
+                    { new Guid("9679a96b-e6e6-44a5-b04e-20c80d70bd4b"), "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5159), true, false, "Admiastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(5160), "Web Programlama" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Articles",
-                columns: new[] { "Id", "AppUserId", "Content", "CreatedBy", "CreatedDate", "IsActive", "IsDeleted", "ModifiedBy", "ModifiedDate", "Title" },
+                columns: new[] { "Id", "AppUserId", "CategoryId", "Content", "CreatedBy", "CreatedDate", "ImgId", "IsActive", "IsDeleted", "ModifiedBy", "ModifiedDate", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("40b63cd3-d9d4-4e47-906f-ea4564b4d827"), new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"), "ASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend Geliştirmek", "Adminastrator", new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3017), true, false, "Adminastrator", new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3018), "ASP.Net Core Teknolojisi İle Web backend Geliştirmek" },
-                    { new Guid("c1b57612-0f59-4d8d-956e-07e40fc7734a"), new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"), "ANodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API Geliştirmek", "Adminastrator", new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3021), true, false, "Adminastrator", new DateTime(2025, 1, 18, 0, 31, 49, 42, DateTimeKind.Local).AddTicks(3022), "NodeJs ile Restfull Web API Geliştirmek" }
+                    { new Guid("40b63cd3-d9d4-4e47-906f-ea4564b4d827"), new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"), null, "ASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend GeliştirmekASP.Net Core Teknolojisi İle Web backend Geliştirmek", "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(3619), null, true, false, "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(3620), "ASP.Net Core Teknolojisi İle Web backend Geliştirmek" },
+                    { new Guid("c1b57612-0f59-4d8d-956e-07e40fc7734a"), new Guid("aa8504d6-2b32-4e89-8ec0-2f4ebe57074b"), null, "ANodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API GeliştirmekNodeJs ile Restfull Web API Geliştirmek", "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(3624), null, true, false, "Adminastrator", new DateTime(2025, 1, 23, 16, 38, 1, 920, DateTimeKind.Local).AddTicks(3624), "NodeJs ile Restfull Web API Geliştirmek" }
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_AppUserId",
                 table: "Articles",
                 column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Articles_CategoryId",
+                table: "Articles",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Articles_ImgId",
+                table: "Articles",
+                column: "ImgId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArticleTag_TagsId",
@@ -336,6 +410,11 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_ImgId",
+                table: "AspNetUsers",
+                column: "ImgId");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -390,6 +469,12 @@ namespace KuemSoft.FullBlogApp.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Img");
         }
     }
 }

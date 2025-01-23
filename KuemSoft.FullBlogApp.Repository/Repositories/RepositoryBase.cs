@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace KuemSoft.FullBlogApp.Repository.Repositories
 {
-    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class, IEntity
+    public class RepositoryBase<T> : IRepositoryBase<T> where T : class, IEntity
     {
         protected readonly AppDbContext _appDbContext;
 
