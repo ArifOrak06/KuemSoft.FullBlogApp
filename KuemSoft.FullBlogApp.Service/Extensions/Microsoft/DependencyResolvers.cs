@@ -1,5 +1,6 @@
 ﻿using KuemSoft.FullBlogApp.Core.Entities.Concrete;
 using KuemSoft.FullBlogApp.Repository.Contexts.EfCore;
+using KuemSoft.FullBlogApp.Service.Helpers;
 using KuemSoft.FullBlogApp.Service.Utilities.AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -40,6 +41,7 @@ namespace KuemSoft.FullBlogApp.Service.Extensions.Microsoft
             });
 
             services.AddAutoMapper(typeof(ArticleProfile));
+            services.AddScoped<IImgHelper,ImgHelper>();
         }
     }
 }

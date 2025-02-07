@@ -11,15 +11,14 @@ namespace KuemSoft.FullBlogApp.SharedLibrary.ResponseResultPattern
         public string IsSuccessMessage { get; set; }
         public List<CustomIdentityError> IdentityErrors { get; set; }
 
+        public static CustomResponseDto<NoContentDto> Success(ResponseType responseType, string isSuccessMessage)
+        {
+            return new CustomResponseDto<NoContentDto> { ResponseType = responseType, IsSuccessMessage = isSuccessMessage };
+        }
         public static CustomResponseDto<T> Success(ResponseType responseType,T data, string isSuccessMessage)
         {
             return new CustomResponseDto<T> { ResponseType = responseType, Data = data, IsSuccessMessage = isSuccessMessage };
         }
-        public static CustomResponseDto<T> Success(ResponseType responseType, string isSuccessMessage)
-        {
-            return new CustomResponseDto<T> { ResponseType = responseType, IsSuccessMessage = isSuccessMessage };
-        }
-
         public static CustomResponseDto<T> Fail(ResponseType responseType, List<string> errorMessages)
         {
             return new CustomResponseDto<T> { ResponseType = responseType, Errors = errorMessages };

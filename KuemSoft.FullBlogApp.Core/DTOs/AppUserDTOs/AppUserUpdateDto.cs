@@ -9,6 +9,7 @@ namespace KuemSoft.FullBlogApp.Core.DTOs.AppUserDTOs
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Email { get; set; }
         public Guid ImgId{ get; set; }
         public ImgDto Img { get; set; }
         public IFormFile Photo { get; set; }

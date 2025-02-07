@@ -11,13 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\Identity\" />
-    <Folder Include="Services\" />
-    <Folder Include="Utilities\FluentValidation\ValidationRulesForAppUserDTOs\" />
-    <Folder Include="Utilities\FluentValidation\ValidationRulesForCategoryDTOs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
