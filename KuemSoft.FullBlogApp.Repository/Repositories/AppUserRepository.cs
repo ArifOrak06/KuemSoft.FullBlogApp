@@ -16,7 +16,7 @@ namespace KuemSoft.FullBlogApp.Repository.Repositories
             _userManager = userManager;
         }
 
-        public async Task<List<AppUser>> GetAllAppUserWithRoleAndArticlesAndCommentsAsync(bool trackChanges, Expression<Func<AppUser, bool>> predicate = null, params Expression<Func<AppUser, object>>[] includeProperties)
+        public async Task<List<AppUser>> GetAllAppUserAsync(bool trackChanges, Expression<Func<AppUser, bool>> predicate = null, params Expression<Func<AppUser, object>>[] includeProperties)
         {
             var query = _userManager.Users;
             if (!trackChanges)
@@ -28,7 +28,7 @@ namespace KuemSoft.FullBlogApp.Repository.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<AppUser> GetAppUserWithRoleAndArticlesAndCommentsAsync(bool trackChanges, Expression<Func<AppUser,bool>> predicate = null, params Expression<Func<AppUser, object>>[] includeProperties)
+        public async Task<AppUser> GetAppUserAsync(bool trackChanges, Expression<Func<AppUser,bool>> predicate = null, params Expression<Func<AppUser, object>>[] includeProperties)
         {
             var query = _userManager.Users;
             if(!trackChanges)

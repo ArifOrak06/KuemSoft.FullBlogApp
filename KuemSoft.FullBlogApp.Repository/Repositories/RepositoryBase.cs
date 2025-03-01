@@ -22,7 +22,7 @@ namespace KuemSoft.FullBlogApp.Repository.Repositories
 
         }
 
-        public async void DeleteAsync(T entity) => _appDbContext.Set<T>().Remove(entity);
+        public async Task DeleteAsync(T entity) => await Task.FromResult(_appDbContext.Set<T>().Remove(entity));
         public async Task<List<T>> GetAllAsync(bool trackChanges, Expression<Func<T, bool>> predicate = null, params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = _appDbContext.Set<T>();

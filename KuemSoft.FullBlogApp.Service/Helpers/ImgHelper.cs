@@ -62,7 +62,8 @@ namespace KuemSoft.FullBlogApp.Service.Helpers
             await stream.FlushAsync();
             return CustomResponseDto<ImgUploadDto>.Success(ResponseType.Success, new ImgUploadDto
             {
-                FullName = $"{folderName}/{newFileName}"
+                FullName = $"{folderName}/{newFileName}",
+                FileType = $"{formFile.ContentType}"
 
             }, $"{newFileName} isimli resim başarılı bir şekilde upload edilmiştir.");
         }

@@ -13,5 +13,6 @@ namespace KuemSoft.FullBlogApp.Core.Entities.Concrete
         public Img Img { get; set; }
         public Guid? ImgId { get; set; }
         public ICollection<Tag> Tags { get; set; } = new List<Tag>();
+        public ICollection<Comment> Comments { get; set; }
     }
 }

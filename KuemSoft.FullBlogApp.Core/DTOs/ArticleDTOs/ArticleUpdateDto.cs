@@ -1,5 +1,4 @@
-﻿using KuemSoft.FullBlogApp.Core.DTOs.AppUserDTOs;
-using KuemSoft.FullBlogApp.Core.DTOs.CategoryDTOs;
+﻿using KuemSoft.FullBlogApp.Core.DTOs.CategoryDTOs;
 using KuemSoft.FullBlogApp.Core.DTOs.ImgDTOs;
 using Microsoft.AspNetCore.Http;
 
@@ -15,5 +14,7 @@ namespace KuemSoft.FullBlogApp.Core.DTOs.ArticleDTOs
         public IFormFile Photo { get; set; }
         public IList<CategoryDto> Categories { get; set; }
         public Guid? CategoryId { get; set; }
+        public bool IsActive { get; set; }
+
     }
 }

@@ -6,6 +6,8 @@
         IAppUserRepository AppUserRepository { get; }
         IArticleRepository ArticleRepository { get; }
         ITagRepository TagRepository { get; }
+        IImgRepository ImgRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
         
     }
 }

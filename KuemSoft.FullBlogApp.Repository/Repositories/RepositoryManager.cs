@@ -7,19 +7,23 @@ namespace KuemSoft.FullBlogApp.Repository.Repositories
 {
     public class RepositoryManager : IRepositoryManager
     {
-        private readonly AppDbContext _appDbContext;
+        //private readonly AppDbContext _appDbContext;
         private readonly Lazy<IArticleRepository> _articleRepository;
         private readonly Lazy<ITagRepository> _tagRepository;
         private readonly Lazy<IAppUserRepository> _appUserRepository;
         private readonly Lazy<ICommentRepository> _commentRepository;
+        private readonly Lazy<IImgRepository> _ımgRepository;
+        private readonly Lazy<ICategoryRepository> _categoryRepository;
 
         public RepositoryManager(AppDbContext appDbContext, UserManager<AppUser> userManager)
         {
-            _appDbContext = appDbContext;
+            //_appDbContext = appDbContext;
             _articleRepository = new Lazy<IArticleRepository>(() => new ArticleRepository(appDbContext));
             _tagRepository = new Lazy<ITagRepository>(() => new TagRepository(appDbContext));
             _appUserRepository = new Lazy<IAppUserRepository>(() => new AppUserRepository(appDbContext, userManager));
             _commentRepository = new Lazy<ICommentRepository>(() => new CommentRepository(appDbContext));
+            _ımgRepository = new Lazy<IImgRepository>(() => new ImgRepository(appDbContext));
+            _categoryRepository = new Lazy<ICategoryRepository>(() => new CategoryRepository(appDbContext));
         }
 
         public ICommentRepository CommentRepository => _commentRepository.Value;
@@ -29,5 +33,9 @@ namespace KuemSoft.FullBlogApp.Repository.Repositories
         public IArticleRepository ArticleRepository => _articleRepository.Value;    
 
         public ITagRepository TagRepository => _tagRepository.Value;
+
+        public IImgRepository ImgRepository => _ımgRepository.Value;
+
+        public ICategoryRepository CategoryRepository => _categoryRepository.Value;
     }
 }
