@@ -11,8 +11,8 @@ namespace KuemSoft.FullBlogApp.Service.Extensions.Identity
         }
         public static string GetLoggerInAppUserEmail(this ClaimsPrincipal claimsPrincipal)
         {
-            return claimsPrincipal.FindFirstValue(ClaimTypes.Email);
+            return claimsPrincipal.FindFirstValue(ClaimTypes.Email.ToString());
         }
-
+    
     }
 }

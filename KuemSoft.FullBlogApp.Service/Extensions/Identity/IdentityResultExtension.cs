@@ -15,7 +15,9 @@ namespace KuemSoft.FullBlogApp.Service.Extensions.Identity
                     Description = identityError.Description,
                 });
             }
+
             return customErrors;
         }
     }
+
 }

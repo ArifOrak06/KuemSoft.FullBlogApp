@@ -18,10 +18,13 @@ namespace KuemSoft.FullBlogApp.Repository.Contexts.EfCore
 
             base.OnModelCreating(builder);
         }
+
         DbSet<Article> Articles { get; set; }
         DbSet<Comment> Comments {  get; set; }  
         DbSet<Tag> Tags { get; set; }
         DbSet<Category> Categories { get; set; }
+        DbSet<ArticleTags> ArticleTags { get; set; }
+
         
     }
 }

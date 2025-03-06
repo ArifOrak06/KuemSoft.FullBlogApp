@@ -10,6 +10,7 @@ namespace KuemSoft.FullBlogApp.SharedLibrary.ResponseResultPattern
         public ResponseType ResponseType { get; set; }
         public string IsSuccessMessage { get; set; }
         public List<CustomIdentityError> IdentityErrors { get; set; }
+        public List<CustomSignInError> SignInErrors { get; set; }
 
         public static CustomResponseDto<NoContentDto> Success(ResponseType responseType, string isSuccessMessage)
         {
@@ -63,5 +64,7 @@ namespace KuemSoft.FullBlogApp.SharedLibrary.ResponseResultPattern
             };
 
         }
+      
+       
     }
 }

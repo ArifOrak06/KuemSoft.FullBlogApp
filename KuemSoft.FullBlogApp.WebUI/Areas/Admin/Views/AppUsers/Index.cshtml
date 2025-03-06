@@ -1,0 +1,58 @@
+﻿
+@model List<AppUserDto>
+
+@{
+    Layout = "_AdminLayout";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Aktif Kullanıcılar</h5>
+        <a class="btn btn-block btn-success" asp-area="Admin" asp-controller="AppUsers" asp-action="CreateAppUser">Kullanıcı Oluştur</a>
+        <!-- Table with hoverable rows -->
+        @{
+            if (Model.Count > 0)
+            {
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Ad Soyad</th>
+                            <th scope="col">Email</th>
+            
+                            <th scope="col">Email Doğrulaması</th>
+                            <th scope="col">İşlemler</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var appUser in Model)
+                        {
+                            <tr>
+                                <th scope="row">@appUser.Id</th>
+                                <td>@appUser.FirstName @appUser.LastName</td>
+                                <td>@appUser.Email</td>
+                 
+                                <td>
+                                    <span class="text-@(appUser.EmailConfirmed ? "bg-warning" : "bg-warning")">@(appUser.EmailConfirmed ? "Doğrulanmış" : "Doğrulanmamış")</span>
+                                </td>
+
+                                <td>
+                                    <a class="btn btn-sm btn-danger" asp-area="Admin" asp-controller="AppUsers" asp-action="DeleteAppUser" asp-route-appUserId="@appUser.Id">Sil</a>
+                                    <a class="btn btn-sm btn-warning" asp-area="Admin" asp-controller="AppUsers" asp-action="UpdateAppUser" asp-route-appUserId="@appUser.Id">Güncelle</a>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            }
+
+
+        }
+        <!-- End Table with hoverable rows -->
+
+    </div>
+</div>

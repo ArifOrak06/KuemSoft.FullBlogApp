@@ -8,6 +8,7 @@
         ITagRepository TagRepository { get; }
         IImgRepository ImgRepository { get; }
         ICategoryRepository CategoryRepository { get; }
+        IArticleTagsRepository ArticleTagsRepository { get; }
         
     }
 }

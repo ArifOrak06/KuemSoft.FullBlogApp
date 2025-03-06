@@ -9,7 +9,7 @@ namespace KuemSoft.FullBlogApp.Service.Utilities.FluentValidation.ValidationRule
         {
             RuleFor(x => x.Title).NotNull().WithMessage("{PropertyName} alanı bilgi girilmesi zorunlu bir alandır.").MinimumLength(3).WithMessage("{PropertyName} alanı minimum 3 karakterden oluşturulmalıdır.").MaximumLength(200).WithMessage("{PropertyName} alanı maksimum 200 karakterden oluşturulmalıdır.").WithName("Başlık");
 
-            RuleFor(x => x.Content).NotNull().WithMessage("{PropertyName} alanı bilgi girilmesi zorunlu bir alandır.").MinimumLength(100).WithMessage("{PropertyName} alanı minimum 3 karakterden oluşturulmalıdır.").WithName("İçerik");
+            RuleFor(x => x.Content).NotNull().WithMessage("{PropertyName} alanı bilgi girilmesi zorunlu bir alandır.").MinimumLength(100).WithMessage("{PropertyName} alanı minimum 100 karakterden oluşturulmalıdır.").WithName("İçerik");
             RuleFor(x => x.CategoryId).NotNull().WithMessage("{PropertyName} alanı bilgi girilmesi zorunlu bir alandır.");
             RuleFor(x => x.Photo).NotNull().WithMessage("{PropertyName} alanı bilgi girilmesi zorunlu bir alandır.");
         }

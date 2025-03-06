@@ -1,6 +1,8 @@
 ﻿using KuemSoft.FullBlogApp.Core.Repositories;
+using KuemSoft.FullBlogApp.Core.UnitOfWork;
 using KuemSoft.FullBlogApp.Repository.Contexts.EfCore;
 using KuemSoft.FullBlogApp.Repository.Repositories;
+using KuemSoft.FullBlogApp.Repository.Utilities.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +25,7 @@ namespace KuemSoft.FullBlogApp.Repository.Extensions.Microsoft
 
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         }
 

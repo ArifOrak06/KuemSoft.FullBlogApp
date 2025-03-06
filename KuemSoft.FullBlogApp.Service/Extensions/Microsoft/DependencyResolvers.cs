@@ -43,9 +43,13 @@ namespace KuemSoft.FullBlogApp.Service.Extensions.Microsoft
             });
 
             services.AddAutoMapper(typeof(ArticleProfile));
+            services.AddTransient<IHttpContextAccessor,HttpContextAccessor>();
             services.AddScoped<IImgHelper,ImgHelper>();
+            services.AddScoped<IAppUserService, AppUserService>();
             services.AddScoped<IArticleService,ArticleService>();
             services.AddScoped<ICommentService,CommentService>();
+            services.AddScoped<ITagService,TagService>();
+            services.AddScoped<ICategoryService,CategoryService>();
         }
     }
 }

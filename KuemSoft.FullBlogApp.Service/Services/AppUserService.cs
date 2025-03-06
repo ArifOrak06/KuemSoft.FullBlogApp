@@ -30,8 +30,11 @@ namespace KuemSoft.FullBlogApp.Service.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;
+        private readonly SignInManager<AppUser> _singInManager;
+        private readonly IValidator<AppUserLoginDto> _loginDtoValidator;
 
-        public AppUserService(IRepositoryManager repositoryManager, IMapper mapper, IValidator<AppUserCreateDto> createDtoValidator, IValidator<AppUserUpdateDto> updateDtoValidator, IImgHelper imgHelper, IHttpContextAccessor contextAccessor, IUnitOfWork unitOfWork, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
+
+        public AppUserService(IRepositoryManager repositoryManager, IMapper mapper, IValidator<AppUserCreateDto> createDtoValidator, IValidator<AppUserUpdateDto> updateDtoValidator, IImgHelper imgHelper, IHttpContextAccessor contextAccessor, IUnitOfWork unitOfWork, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, SignInManager<AppUser> singInManager, IValidator<AppUserLoginDto> loginDtoValidator)
         {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
@@ -43,6 +46,8 @@ namespace KuemSoft.FullBlogApp.Service.Services
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _roleManager = roleManager;
+            _singInManager = singInManager;
+            _loginDtoValidator = loginDtoValidator;
         }
 
         public async Task<CustomResponseDto<AppUserCreateDto>> CreateAppUserAsync(AppUserCreateDto appUserCreateDto)
@@ -127,7 +132,22 @@ namespace KuemSoft.FullBlogApp.Service.Services
             newDto.Role = string.Join("", await _userManager.GetRolesAsync(currentUser));
             return CustomResponseDto<AppUserDto>.Success(ResponseType.Success, newDto, $"AppUser Id : {appUserId}'ye sahip kullanıcı başarılı bir şekilde listelenmiştir.");
         }
-        
+
+        public async Task<CustomResponseDto<NoContentDto>> LoginToAppUserAsync(AppUserLoginDto appUserLoginDto)
+        {
+            ValidationResult? validationResult = await _loginDtoValidator.ValidateAsync(appUserLoginDto);
+            if (!validationResult.IsValid)
+                return CustomResponseDto<NoContentDto>.ValidationFail(ResponseType.ValidError, validationResult.ConvertToCustomValidationError());
+            AppUser? currentAppUser = await _userManager.FindByEmailAsync(appUserLoginDto.Email);
+            if (currentAppUser == null)
+                return CustomResponseDto<NoContentDto>.Fail(ResponseType.NotFound, $"Email veya şifre hatalı.");
+            var userPasswordCheck = await _singInManager.PasswordSignInAsync(currentAppUser,appUserLoginDto.Password,appUserLoginDto.RememberMe,false);
+            if (userPasswordCheck.Succeeded)
+                return CustomResponseDto<NoContentDto>.Success(ResponseType.Success, "Login işlemi başarılı olarak gerçekleştirilmiştir.");
+            return CustomResponseDto<NoContentDto>.Fail(ResponseType.Error, "Email veya şifre Hatalı");
+
+        }
+
         public async Task<CustomResponseDto<AppUserUpdateDto>> UpdateAppUserAsync(AppUserUpdateDto appUserUpdateDto)
         {
             ValidationResult? validationResult = await _updateDtoValidator.ValidateAsync(appUserUpdateDto);

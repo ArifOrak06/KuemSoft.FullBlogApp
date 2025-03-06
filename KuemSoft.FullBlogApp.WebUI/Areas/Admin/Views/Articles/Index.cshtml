@@ -1,0 +1,54 @@
+﻿@model List<ArticleDto>
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Aktif Makaleler</h5>
+        <a class="btn btn-block btn-success" asp-area="Admin" asp-controller="Articles" asp-action="CreateArticle">Makale Oluştur</a>
+        <!-- Table with hoverable rows -->
+        @{
+            if (Model.Count > 0)
+            {
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Başlık</th>
+                            <th scope="col">Oluşturma Tarihi</th>
+                            <th scope="col">Yazar</th>
+                            <th scope="col">Durumu</th>
+                            <th scope="col">İşlemler</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var article in Model)
+                        {
+                            <tr>
+                                <th scope="row">@article.Id</th>
+                                <td>@article.Title</td>
+                                <td>@article.CreatedDate</td>
+                                <td>@article.AppUser.Email</td>
+                                <td>
+                                <span class="text-@(article.IsActive ? "bg-warning" : "bg-warning")">@(article.IsActive ? "Aktif" : "Pasif")</span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-danger" asp-area="Admin" asp-controller="Articles" asp-action="SoftDeleteArticle" asp-route-articleId="@article.Id">Sil</a>
+                                    <a class="btn btn-sm btn-warning" asp-area="Admin" asp-controller="Articles" asp-action="UpdateArticle" asp-route-articleId="@article.Id">Güncelle</a>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            }
+
+
+        }
+        <!-- End Table with hoverable rows -->
+
+    </div>
+</div>

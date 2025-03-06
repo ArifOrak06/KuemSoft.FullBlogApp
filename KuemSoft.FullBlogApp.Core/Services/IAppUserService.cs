@@ -10,5 +10,6 @@ namespace KuemSoft.FullBlogApp.Core.Services
         Task<CustomResponseDto<AppUserCreateDto>> CreateAppUserAsync(AppUserCreateDto appUserCreateDto);
         Task<CustomResponseDto<AppUserUpdateDto>> UpdateAppUserAsync(AppUserUpdateDto appUserUpdateDto);
         Task<CustomResponseDto<NoContentDto>> DeleteAppUserAsync(Guid appUserId);
+        Task<CustomResponseDto<NoContentDto>> LoginToAppUserAsync(AppUserLoginDto appUserLoginDto);
     }
 }
